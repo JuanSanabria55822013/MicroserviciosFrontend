@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Gestion de estudiantes</title>
+    <title>Gestion de actividades</title>
     <link rel="stylesheet" href="css/styles.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Oswald:wght@200&family=Russo+One&display=swap');
@@ -10,33 +10,32 @@
 </head>
 <body>
     <header>
-        <h1>GESTION DE ESTUDIANTES</h1>
+        <h1>GESTION DE ACTIVIDADES</h1>
     </header>
     <main>
         <section id = 'table'>
-            <table id= "EstudiantesTb">
+            <table id= "ActividadesTb">
                 <thead>
                     <tr>
-                        <th>CODIGO</th>
-                        <th>NOMBRES</th>
-                        <th>APELLIDOS</th>
-                        <th></th>
+                        <th>ID</th>
+                        <th>DESCRIPCION</th>
+                        <th>NOTAS</th>
+                        <th>descripcion ESTUDIANTE</th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Johan</td>
-                        <td>jmfonseca</td>
+                        <td>1</td>
+                        <td>quiz</td>
+                        <td>2</td>
+                        <td>1</td>
                         <td>
                             <button>Modificar</button>
                         </td>
                         <td>
                             <button>Eliminar</button>
-                        </td>
-                        <td>
-                            <button>Notas</button>
                         </td>
                     </tr>
                 </tbody>
@@ -45,22 +44,19 @@
         <section id = 'form'>
             <form id = 'formularioEstudiante'>
                 <label>
-                    <span>Codigo: </span>
-                    <input type="number" name="codigo" id = "codigo" required>
+                    <span>Descripcion: </span>
+                    <input type="text" name="descripcion" id = "descripcion" required>
                 </label>
                 <label>
-                    <span>Nombres: </span>
-                    <input type="text" name="nombres" id = "nombres" required>
-                </label>
-                <label>
-                    <span>Apellidos: </span>
-                    <input type="text" name="apellidos"  id ="apellidos" required>
+                    <span>Notas: </span>
+                    <input type="number" name="notas" id = "notas" required>
                 </label>
                 <section>
                     <button id = "Guardar" type="button">GUARDAR</button>
                 </section>
             </form>
         </section>
+        <a href="index.html"></a>
     </main>
 
         <footer>
@@ -68,6 +64,12 @@
             <p>@2023</p>
         </footer>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" type ="text/javascript"></script>
-        <script src="js/gestionEstudiantes.js"></script>
+        <script>
+            var urlParams = new URLSearchParams(window.location.search);
+            var codigo = urlParams.get('codigo');
+    
+            var url = "js/gestionActividades?codigo=" + encodeURIComponent(codigo);
+            window.location.href = url;
+        </script>
 </body>
 </html>
