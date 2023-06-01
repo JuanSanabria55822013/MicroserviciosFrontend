@@ -1,6 +1,6 @@
 let modificarActividad = () => {}; 
 let eliminarActividad = () => {};
-let mostrarActividad = () => {}; 
+let mostrarActividad = () => {};
 let datos = () => {};  
 let idActividadModificar = 1; 
 let modificar = -1; 
@@ -8,7 +8,8 @@ let modificar = -1;
 $(document).ready(function(){
     var codigoEstudiante = localStorage.getItem('codigoEstudiante');
     console.log(codigoEstudiante);
-    mostrarActividad = function(){ 
+    mostrarActividad = function(){
+         
     $.ajax({ 
         method: 'get', 
         url: 'http://localhost:8000/actividades', 
@@ -18,6 +19,8 @@ $(document).ready(function(){
         const table = document.getElementById('ActividadesTb'); 
         const tbody = table.getElementsByTagName('tbody')[0]; 
         let html = ''; 
+        let sumatoria = 0;
+        let count = 0;
             Actividades.forEach(Actividad => {
               if(Actividad.codigoEstudiante == codigoEstudiante){
               html += '<tr>';
@@ -32,15 +35,28 @@ $(document).ready(function(){
               html += '       <button onclick="eliminarActividad(' + Actividad.id + ')" >ELIMINAR</button>';
               html += '   </td>';
               html += '<tr>';
+              sumatoria += parseFloat(Actividad.nota)
+              count += 1;
                 }
             });
+        let promedio = sumatoria/count;
+        if(promedio != 0){
+            if(promedio >= 3){
+                document.getElementById('promedio').innerText = 'Felicidades esta pasando la materia con: '+promedio
+                document.getElementById('promedio').id = 'paso';
+            }else{
+                document.getElementById('promedio').innerText = 'Lo sentimos esta perdiendo la materia con: '+promedio
+                document.getElementById('promedio').id = 'perdio';
+            }
+        }else
+        {document.getElementById('promedio').innerText = 'No hay notas';}
         tbody.innerHTML = html;
         console.log(dataJson);
     }).fail((error) => {
         console.error(error);
     })
  }
- 
+
     mostrarActividad();
 
     document.getElementById('Guardar').addEventListener('click', ()=>{

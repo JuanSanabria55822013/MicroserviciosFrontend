@@ -140,3 +140,21 @@ a:hover{
 background-color: #969696;
 color: #333;
 }
+
+h2 {
+  background-color: #333;
+  font-family: 'Oswald', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+#perdio{
+  color: rgb(214, 80, 80);
+}
+
+#paso{
+  color: rgb(57, 173, 57);
+}
