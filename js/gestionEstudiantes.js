@@ -40,11 +40,10 @@ $(document).ready(function(){
     })
  }
 
-    redirigirActividades = function(Estudiantecodigo){
-        codigo = Estudiantecodigo;
-        var url = "actividades.html?codigo=" + encodeURIComponent(codigo);
-        window.location.href = url;
-    }
+    redirigirActividades = function(Estudiantecodigo) {
+        localStorage.setItem('codigoEstudiante', Estudiantecodigo);
+        window.location.href = 'actividades.html';
+    };
 
     mostrarEstudiante();
 
@@ -125,5 +124,6 @@ $(document).ready(function(){
             mostrarEstudiante()
         })
     }
+
 
     })
