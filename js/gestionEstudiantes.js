@@ -97,6 +97,20 @@ $(document).ready(function(){
     document.getElementById('formularioEstudiante').reset()
     })
 
+    modificarEstudiante = function(Estudiantecodigo){
+        codigoEstudianteModificar = Estudiantecodigo
+        $.ajax({
+            url: 'http://localhost:8000/estudiantes/'+codigoEstudianteModificar,
+            method: 'get',
+        }).done(response =>{
+            const dataJson = JSON.parse(response);
+            const estudiantes= dataJson.data;
+            document.getElementById('codigo').setAttribute('value',estudiantes.codigo)
+            document.getElementById('nombres').setAttribute('value', estudiantes.nombres)
+            document.getElementById('apellidos').setAttribute('value', estudiantes.apellidos)
+            })
+        modificar = 1
+    }    
 
 
     eliminarEstudiante = function(Estudiantecodigo){
