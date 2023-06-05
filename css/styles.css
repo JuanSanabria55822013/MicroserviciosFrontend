@@ -143,6 +143,7 @@ color: #333;
 
 h2 {
   background-color: #333;
+  color: #fff;
   font-family: 'Oswald', sans-serif;
   font-weight: bold;
   font-size: 30px;
@@ -151,10 +152,10 @@ h2 {
   padding: 10px 20px;
 }
 
-#perdio{
+.perdio{
   color: rgb(214, 80, 80);
 }
 
-#paso{
+.paso{
   color: rgb(57, 173, 57);
 }

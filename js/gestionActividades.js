@@ -40,16 +40,22 @@ $(document).ready(function(){
                 }
             });
         let promedio = sumatoria/count;
-        if(promedio != 0){
-            if(promedio >= 3){
-                document.getElementById('promedio').innerText = 'Felicidades esta pasando la materia con: '+promedio
-                document.getElementById('promedio').id = 'paso';
-            }else{
-                document.getElementById('promedio').innerText = 'Lo sentimos esta perdiendo la materia con: '+promedio
-                document.getElementById('promedio').id = 'perdio';
+        if (promedio >= 0) {
+            if (promedio >= 3) {
+                document.getElementById('promedio').innerText = '¡Felicidades! Estás pasando la materia con: ' + promedio;
+                document.getElementById('promedio').className = 'paso';
+                promedio = 0;
+            } else {
+                document.getElementById('promedio').innerText = 'Lo sentimos, estás perdiendo la materia con: ' + promedio;
+                document.getElementById('promedio').className = 'perdio';
+                promedio = 0;
             }
-        }else
-        {document.getElementById('promedio').innerText = 'No hay notas';}
+        } else {
+
+            document.getElementById('promedio').innerText = 'No hay notas';
+            document.getElementById('promedio').classList.remove('perdio');
+            document.getElementById('promedio').classList.remove('paso');
+        }
         tbody.innerHTML = html;
         console.log(dataJson);
     }).fail((error) => {
